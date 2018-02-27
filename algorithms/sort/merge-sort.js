@@ -8,16 +8,18 @@ const mergeSortNumbers = (array) => {
     let sortOne = mergeSortNumbers(array.slice(0, array.length / 2));
     let sortTwo = mergeSortNumbers(array.slice(array.length / 2, array.length));
     let sortedArray = [];
-    while (sortOne.length + sortTwo.length > 1) {
-      if (sortOne[0] < sortTwo[0]) {
-        sortedArray.push(sortOne[0]);
-        sortOne.splice(0, 1);
+    let i = 0;
+    let j = 0;
+    while (i < sortOne.length || j < sortTwo.length) {
+      if (sortOne[i] < sortTwo[j]) {
+        sortedArray.push(sortOne[i]);
+        i++;
       } else {
-        sortedArray.push(sortTwo[0]);
-        sortTwo.splice(0, 1);
+        sortedArray.push(sortTwo[j]);
+        j++;
       }
     }
-    return sortedArray.concat(sortOne).concat(sortTwo);
+    return sortedArray;
   }
 };
 
